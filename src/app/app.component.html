@@ -17,87 +17,110 @@
               <div class="row">
                   <div class="form-group col-md-4">
                       <label for="name">Name:</label>
-                      <input type="text" [(ngModel)]="employeeObj.empName" id="name" placeholder="Enter Name" class="form-control">
+                      <input type="text" [(ngModel)]="employeeObj.empName" [ngModelOptions]="{standalone: true}" id="name" placeholder="Enter Name" class="form-control">
                   </div>
                   <div class="form-group col-md-4">
                       <label for="email">Email:</label>
-                      <input type="email" id="email" placeholder="Enter Email" class="form-control">
+                      <input type="email" [(ngModel)]="employeeObj.empEmailId" [ngModelOptions]="{standalone: true}" id="email" placeholder="Enter Email" class="form-control">
                   </div>
                   <div class="form-group col-md-4">
                       <label for="password">Password:</label>
-                      <input type="password" id="password" placeholder="Enter Password" class="form-control">
+                      <input type="password" [(ngModel)]="employeeObj.password" [ngModelOptions]="{standalone: true}" id="password" placeholder="Enter Password" class="form-control">
                   </div>
               </div>
               <div class="row">
                   <div class="form-group col-md-6">
                       <label for="designation">Designation:</label>
-                      <input type="text" id="designation" placeholder="Enter Designation" class="form-control">
+                      <select class="form-select" [(ngModel)]="employeeObj.empDesignationId" [ngModelOptions]="{standalone: true}" >
+                        <option value="">Select designation</option>
+                        @for (item of designationList; track $index) {
+                            <option value="item.designationId">{{item.designation}}</option>
+
+                        }
+                      </select>
                   </div>
+
+
+                  <div class="form-group col-md-6">
+                    <label for="designation">Role:</label>
+                    <select class="form-select" [(ngModel)]="employeeObj.roleId" [ngModelOptions]="{standalone: true}" >
+                      <option value="">Select designation</option>
+                          <option *ngFor="let item of rolesList" value="item.roleId">{{item.designation}}</option>
+
+                      
+                    </select>
+                </div>
+
+
+
+
+
+
                   <div class="form-group col-md-6">
                       <label for="contact">Contact No:</label>
-                      <input type="tel" id="contact" placeholder="Enter Contact No" class="form-control">
+                      <input type="tel" [(ngModel)]="employeeObj.empContactNo" [ngModelOptions]="{standalone: true}" id="contact" placeholder="Enter Contact No" class="form-control">
                   </div>
               </div>
               <div class="row">
                   <div class="form-group col-md-6">
                       <label for="altContact">Alternate Contact No:</label>
-                      <input type="tel" id="altContact" placeholder="Enter Alternate Contact No" class="form-control">
+                      <input type="tel" [(ngModel)]="employeeObj.empAltContactNo" [ngModelOptions]="{standalone: true}" id="altContact" placeholder="Enter Alternate Contact No" class="form-control">
                   </div>
                   <div class="form-group col-md-6">
                       <label for="personalEmail">Personal Email ID:</label>
-                      <input type="email" id="personalEmail" placeholder="Enter Personal Email ID" class="form-control">
+                      <input type="email" [(ngModel)]="employeeObj.empPersonalEmailId" [ngModelOptions]="{standalone: true}" id="personalEmail" placeholder="Enter Personal Email ID" class="form-control">
                   </div>
               </div>
               <div class="row">
                   <div class="form-group col-md-6">
                       <label for="yearsExperience">Total Years of Experience:</label>
-                      <input type="number" id="yearsExperience" placeholder="Enter Total Years of Experience" class="form-control">
+                      <input type="number" [(ngModel)]="employeeObj.empExpTotalYear" [ngModelOptions]="{standalone: true}" id="yearsExperience" placeholder="Enter Total Years of Experience" class="form-control">
                   </div>
                   <div class="form-group col-md-6">
                       <label for="monthsExperience">Total Months of Experience:</label>
-                      <input type="number" id="monthsExperience" placeholder="Enter Total Months of Experience" class="form-control">
+                      <input type="number" [(ngModel)]="employeeObj.empExpTotalMonth" [ngModelOptions]="{standalone: true}" id="monthsExperience" placeholder="Enter Total Months of Experience" class="form-control">
                   </div>
               </div>
               <div class="row">
                   <div class="form-group col-md-6">
                       <label for="city">City:</label>
-                      <input type="text" id="city" placeholder="Enter City" class="form-control">
+                      <input type="text" [(ngModel)]="employeeObj.empCity" [ngModelOptions]="{standalone: true}" id="city" placeholder="Enter City" class="form-control">
                   </div>
                   <div class="form-group col-md-6">
                       <label for="state">State:</label>
-                      <input type="text" id="state" placeholder="Enter State" class="form-control">
+                      <input type="text" [(ngModel)]="employeeObj.empState" [ngModelOptions]="{standalone: true}" id="state" placeholder="Enter State" class="form-control">
                   </div>
               </div>
               <div class="row">
                   <div class="form-group col-md-12">
                       <label for="address">Address:</label>
-                      <textarea id="address" placeholder="Enter Address" class="form-control"></textarea>
+                      <textarea [(ngModel)]="employeeObj.empAddress" [ngModelOptions]="{standalone: true}" id="address" placeholder="Enter Address" class="form-control"></textarea>
                   </div>
               </div>
               <div class="row">
                   <div class="form-group col-md-6">
                       <label for="pincode">Pincode:</label>
-                      <input type="text" id="pincode" placeholder="Enter Pincode" class="form-control">
+                      <input type="text" [(ngModel)]="employeeObj.empPinCode" [ngModelOptions]="{standalone: true}" id="pincode" placeholder="Enter Pincode" class="form-control">
                   </div>
                   <div class="form-group col-md-6">
                       <label for="personalCity">Personal City:</label>
-                      <input type="text" id="personalCity" placeholder="Enter Personal City" class="form-control">
+                      <input type="text" [(ngModel)]="employeeObj.empPerCity" [ngModelOptions]="{standalone: true}" id="personalCity" placeholder="Enter Personal City" class="form-control">
                   </div>
               </div>
               <div class="row">
                   <div class="form-group col-md-6">
                       <label for="personalState">Personal State:</label>
-                      <input type="text" id="personalState" placeholder="Enter Personal State" class="form-control">
+                      <input type="text" [(ngModel)]="employeeObj.empPerState" [ngModelOptions]="{standalone: true}" id="personalState" placeholder="Enter Personal State" class="form-control">
                   </div>
                   <div class="form-group col-md-6">
                       <label for="personalPincode">Personal Pin Code:</label>
-                      <input type="text" id="personalPincode" placeholder="Enter Personal Pin Code" class="form-control">
+                      <input type="text" [(ngModel)]="employeeObj.empPerPinCode" [ngModelOptions]="{standalone: true}" id="personalPincode"  placeholder="Enter Personal Pin Code" class="form-control">
                   </div>
               </div>
               <div class="row">
                   <div class="form-group col-md-12">
                       <label for="personalAddress">Personal Address:</label>
-                      <textarea id="personalAddress" placeholder="Enter Personal Address" class="form-control"></textarea>
+                      <textarea [(ngModel)]="employeeObj.empPerAddress" id="personalAddress" [ngModelOptions]="{standalone: true}" placeholder="Enter Personal Address" class="form-control"></textarea>
                   </div>
               </div>
           </form>
@@ -121,15 +144,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr *ngFor="let skill of employeeObj.erpEmployeeSkills">
                                 <td >
-                                    <input type="text" placeholder="Skill" class="form-control">
+                                    <input type="text" [(ngModel)]="skill.skill" [ngModelOptions]="{standalone: true}" placeholder="Skill" class="form-control">
                                 </td>
                                 <td>
-                                    <input type="text" placeholder="Total Experience" class="form-control"> 
+                                    <input type="text" [(ngModel)]="skill.totalYearExp" [ngModelOptions]="{standalone: true}" placeholder="Total Experience" class="form-control"> 
                                 </td>
                                 <td>
-                                    <input type="text" placeholder="Last Version" class="form-control"> 
+                                    <input type="text" [(ngModel)]="skill.lastVersionUsed" [ngModelOptions]="{standalone: true}" placeholder="Last Version" class="form-control"> 
 
                                 </td>
                               
@@ -141,7 +164,7 @@
                             </tr>
                             <tr>
                                 <td colspan="4">
-                            <button class="btn btn-sm btn-info" onclick="addSkills()">Add</button>
+                            <button class="btn btn-sm btn-info" (click)="addSkills()">Add</button>
 
                                 </td>
                             </tr>
@@ -175,21 +198,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr *ngFor="let exp of employeeObj.ermEmpExperience">
                                 <td>
-                                    <input type="text" class="form-control " placeholder="Company">
+                                    <input type="text" [(ngModel)]="exp.companyName" [ngModelOptions]="{standalone: true}" class="form-control " placeholder="Company">
                                 </td>
                                 <td>
-                                    <input type="date" class="form-control" placeholder="Start Date">
+                                    <input type="date" [(ngModel)]="exp.startDate" class="form-control" [ngModelOptions]="{standalone: true}" placeholder="Start Date">
                                 </td>
                                 <td>
-                                    <input type="date" class="form-control" placeholder="End Date">
+                                    <input type="date" [(ngModel)]="exp.endDate" class="form-control" [ngModelOptions]="{standalone: true}" placeholder="End Date">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" placeholder="Designation">
+                                    <input type="text" [(ngModel)]="exp.designation" class="form-control" [ngModelOptions]="{standalone: true}" placeholder="Designation">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" placeholder="Project">
+                                    <input type="text" [(ngModel)]="exp.projectsWorkedOn" class="form-control" [ngModelOptions]="{standalone: true}" placeholder="Project">
                                 </td>
                                
                                 <td class="col-md-12 btn-container d-flex">
@@ -203,7 +226,7 @@
                             </tr>
                             <tr>
                                 <td colspan="6">
-                            <button class="btn btn-sm btn-info" onclick="addExperience()">Add</button>
+                            <button class="btn btn-sm btn-info" (click)="addExp()">Add</button>
 
                                 </td>
                             </tr>
