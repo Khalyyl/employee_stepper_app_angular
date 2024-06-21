@@ -45,7 +45,7 @@
                     <label for="designation">Role:</label>
                     <select class="form-select" [(ngModel)]="employeeObj.roleId" [ngModelOptions]="{standalone: true}" >
                       <option value="">Select designation</option>
-                          <option *ngFor="let item of rolesList" value="item.roleId">{{item.designation}}</option>
+                          <option *ngFor="let item of rolesList" value="item.roleId">{{item.roleId}}</option>
 
                       
                     </select>
@@ -124,6 +124,12 @@
                   </div>
               </div>
           </form>
+          <div class="row">
+            <div class="col-12 text-end">
+                <button class="btn btn-sm btn-info" (click)="gotostep2()">Next</button>
+
+            </div>
+          </div>
       </div>
       
 

@@ -79,6 +79,12 @@ export class AppComponent implements OnInit{
     this.activeStep = activeStep;
   }
 
+  gotostep2() {
+    const currentStep = this.stepsList.find((step) => step.stepName == this.activeStep.stepName);
+    currentStep.isComplete = true;
+    this.activeStep = this.stepsList[1];
+  }
+
   addSkills() {
     const skillObj =  {
     "empSkillId": 0,
