@@ -7,7 +7,7 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule,FormsModule,HttpClientModule],
+  imports: [CommonModule,FormsModule,HttpClientModule,RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -22,6 +22,8 @@ export class AppComponent implements OnInit{
   ];
 
   activeStep: any = this.stepsList[0];
+
+  stepperCompletionValue: number = 8;
 
   employeeObj: any = {
     "roleId": 0,
@@ -56,15 +58,7 @@ export class AppComponent implements OnInit{
     "lastVersionUsed": "string"
   }
 
-  empExpObj: any = {
-    "empExpId": 0,
-      "empId": 0,
-      "companyName": "string",
-      "startDate": "2024-06-19T15:12:45.937Z",
-      "endDate": "2024-06-19T15:12:45.937Z",
-      "designation": "string",
-      "projectsWorkedOn": "string"
-  }
+
 
   constructor(private http: HttpClient) {
   }
@@ -83,6 +77,13 @@ export class AppComponent implements OnInit{
     const currentStep = this.stepsList.find((step) => step.stepName == this.activeStep.stepName);
     currentStep.isComplete = true;
     this.activeStep = this.stepsList[1];
+    this.stepperCompletionValue = 50;
+  }
+  gotostep3() {
+    const currentStep = this.stepsList.find((step) => step.stepName == this.activeStep.stepName);
+    currentStep.isComplete = true;
+    this.activeStep = this.stepsList[2];
+    this.stepperCompletionValue = 100;
   }
 
   addSkills() {
@@ -114,23 +115,31 @@ export class AppComponent implements OnInit{
 
 
   loadDesignations() {
-    this.http.get<{ data: any }>('https://freeapi.gerasim.in/api/EmployeeApp/GetAllDesignation').subscribe((res) => {
+    this.http.get("https://freeapi.gerasim.in/api/EmployeeApp/GetAllDesignation").subscribe((res:any) => {
       this.designationList = res.data;
     })
   }
 
   loadroles() {
-    this.http.get<{ data: any }>('https://freeapi.gerasim.in/api/EmployeeApp/GetAllRoles').subscribe((res) => {
+    this.http.get("https://freeapi.gerasim.in/api/EmployeeApp/GetAllRoles").subscribe((res:any) => {
       this.rolesList = res.data;
     })
   }
 
   saveEmployee() {
     debugger;
-    this.http.post('https://freeapi.gerasim.in/api/EmployeeApp/CreateNewEmployee', this.employeeObj).subscribe((res) => {
-      alert('Employee Saved Successfully');
-    })
-  }
+    this.http.post('https://freeapi.gerasim.in/api/EmployeeApp/CreateNewEmployee', this.employeeObj).subscribe({
+      next: (res) => {
+        alert('Employee Saved Successfully');
+      },
+      error: (error) => {
+        console.error('Error saving the employee:', error);
+        // Display a more detailed error message if the server provides it
+        const serverErrorMessage = error.error?.message || 'Unknown error';
+        alert(`Failed to save the employee. Error: ${serverErrorMessage}`);
+      }
+    });
+}
 
    
 

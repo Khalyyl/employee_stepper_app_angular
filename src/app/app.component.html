@@ -7,7 +7,7 @@
       
     </ul>
     <div id="line">
-      <div id="line-progress"></div>
+      <div id="line-progress" [style.width.%]="stepperCompletionValue"></div>
     </div>
     <!-- progress-bar-container -->
     <div id="progress-content-section">
@@ -45,7 +45,7 @@
                     <label for="designation">Role:</label>
                     <select class="form-select" [(ngModel)]="employeeObj.roleId" [ngModelOptions]="{standalone: true}" >
                       <option value="">Select designation</option>
-                          <option *ngFor="let item of rolesList" value="item.roleId">{{item.roleId}}</option>
+                          <option *ngFor="let item of rolesList" value="item.roleId">{{item.role}}</option>
 
                       
                     </select>
@@ -178,8 +178,14 @@
                         <tfoot>
                         </tfoot>
                     </table>
+
                     <div class="btn-container d-flex justify-content-end">
-                        
+                        <div class="row">
+            <div class="col-12 text-end">
+                <button class="btn btn-sm btn-info" (click)="gotostep3()">Next</button>
+
+            </div>
+          </div>
                     </div>
                 </div>
             </div>
@@ -236,15 +242,24 @@
 
                                 </td>
                             </tr>
+                            
                         </tbody>
+                        
                         <tfoot>
                         </tfoot>
+
                     </table>
+                    
                    
+          
                 </div>
             </div>
            
         </div>
+        </div>
+        <div class="col-12 text-end">
+            <button class="btn btn-sm btn-info" (click)="saveEmployee()">Save</button>
+
         </div>
       </div>
   </div>
